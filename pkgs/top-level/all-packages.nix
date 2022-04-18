@@ -16601,6 +16601,8 @@ with pkgs;
 
   certbot-full = certbot.withPlugins (cp: with cp; [
     certbot-dns-cloudflare
+    certbot-dns-digitalocean
+    certbot-dns-google
     certbot-dns-rfc2136
     certbot-dns-route53
   ]);
