@@ -2792,7 +2792,9 @@ with pkgs;
     '';
   });
 
-  caddy = callPackage ../servers/caddy { };
+  caddy = callPackage ../servers/caddy {
+    buildGoModule = buildGo118Module;
+  };
 
   traefik = callPackage ../servers/traefik { };
 
