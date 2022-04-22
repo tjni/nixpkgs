@@ -23,4 +23,6 @@ export CPATH=${CPATH}${CPATH:+':'}$(buildcpath ${NIX_CFLAGS_COMPILE} \
 export CPLUS_INCLUDE_PATH=$(<@clang@/nix-support/libcxx-cxxflags)${CPLUS_INCLUDE_PATH:+':'}${CPLUS_INCLUDE_PATH}:$(buildcpath ${NIX_CFLAGS_COMPILE} \
                                                                                       $(<@clang@/nix-support/libc-cflags)):@clang@/resource-root/include
 
+echo "What??? ${CPLUS_INCLUDE_PATH}";
+
 exec -a "$0" @unwrapped@/bin/$(basename $0) "$@"

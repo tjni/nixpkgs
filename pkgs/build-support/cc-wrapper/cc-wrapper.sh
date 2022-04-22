@@ -188,7 +188,7 @@ if [ "$cc1" = 1 ]; then
 fi
 
 # Optionally print debug info.
-if (( "${NIX_DEBUG:-0}" >= 1 )); then
+#if (( "${NIX_DEBUG:-0}" >= 1 )); then
     # Old bash workaround, see ld-wrapper for explanation.
     echo "extra flags before to @prog@:" >&2
     printf "  %q\n" ${extraBefore+"${extraBefore[@]}"}  >&2
@@ -196,7 +196,7 @@ if (( "${NIX_DEBUG:-0}" >= 1 )); then
     printf "  %q\n" ${params+"${params[@]}"} >&2
     echo "extra flags after to @prog@:" >&2
     printf "  %q\n" ${extraAfter+"${extraAfter[@]}"} >&2
-fi
+#fi
 
 PATH="$path_backup"
 # Old bash workaround, see above.
