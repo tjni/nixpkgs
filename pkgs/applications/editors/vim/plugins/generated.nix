@@ -329,14 +329,14 @@ final: prev:
 
   SpaceVim = buildVimPluginFrom2Nix {
     pname = "SpaceVim";
-    version = "2022-04-19";
+    version = "2022-04-29";
     src = fetchFromGitHub {
-      owner = "SpaceVim";
+      owner = "tjni";
       repo = "SpaceVim";
-      rev = "a1b65988e72a091334cedfe7ed1d067819f4e1eb";
-      sha256 = "096q33lrgn4i8ic6y66snb312ly3rdxm8a15mykawn1n533d04nq";
+      rev = "375fd6e9374a11c2af6e5ab68485cf57b3fde12e";
+      sha256 = "1lywag6z7z21d4i7cgc627dlnf385p85znx98gj47y1msymy91d4";
     };
-    meta.homepage = "https://github.com/SpaceVim/SpaceVim/";
+    meta.homepage = "https://github.com/tjni/SpaceVim/";
   };
 
   Spacegray-vim = buildVimPluginFrom2Nix {
