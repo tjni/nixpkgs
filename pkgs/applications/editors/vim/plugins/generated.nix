@@ -329,12 +329,12 @@ final: prev:
 
   SpaceVim = buildVimPluginFrom2Nix {
     pname = "SpaceVim";
-    version = "2022-04-19";
+    version = "2022-04-30";
     src = fetchFromGitHub {
       owner = "SpaceVim";
       repo = "SpaceVim";
-      rev = "a1b65988e72a091334cedfe7ed1d067819f4e1eb";
-      sha256 = "096q33lrgn4i8ic6y66snb312ly3rdxm8a15mykawn1n533d04nq";
+      rev = "5b0495059d5573860d91190dffaa8fd569b61017";
+      sha256 = "1ajcxv3p9hgp7m7hxywv1h5r8i238wllkfn8g1i6l73iba0jd58r";
     };
     meta.homepage = "https://github.com/SpaceVim/SpaceVim/";
   };
