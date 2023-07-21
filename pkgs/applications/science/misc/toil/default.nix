@@ -36,6 +36,12 @@ python3.pkgs.buildPythonApplication rec {
     typing-extensions
   ];
 
+  # The tests call psutil.cpu_count(logical=True), which on macOS calls the
+  # sysctlbyname function.
+  sandboxProfile = ''
+    (allow sysctl-write)
+  '';
+
   nativeCheckInputs = [
     rsync
   ] ++ (with python3.pkgs; [
