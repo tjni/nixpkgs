@@ -30724,6 +30724,8 @@ with pkgs;
   darkman = callPackage ../applications/misc/darkman { };
 
   darktable = callPackage ../applications/graphics/darktable {
+    # please revert this once we default to clang 16 in the stdenv
+    stdenv = if stdenv.cc.isClang then clang13Stdenv else stdenv;
     lua = lua5_4;
     pugixml = pugixml.override { shared = true; };
   };
