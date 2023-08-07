@@ -1,32 +1,36 @@
 { lib
 , fetchFromGitHub
 , buildPythonPackage
-, nose
 , pillow
-, wheezy-captcha
+, pytestCheckHook
+, setuptools
+, wheel
 }:
 
 buildPythonPackage rec {
   pname = "captcha";
-  version = "0.4";
-  format = "setuptools";
+  version = "0.5.0";
+  format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "lepture";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-uxUjoACN65Cx5LMKpT+bZhKpf2JRSaEyysnYUgZntp8=";
+    hash = "sha256-TPPuf0BRZPSHPSF0HuGxhjhoSyZQ7r86kSjkrztgZ5w=";
   };
+
+  nativeBuildInputs = [
+    setuptools
+    wheel
+  ];
 
   propagatedBuildInputs = [ pillow ];
 
   pythonImportsCheck = [ "captcha" ];
 
-  nativeCheckInputs = [ nose wheezy-captcha ];
-
-  checkPhase = ''
-    nosetests -s
-  '';
+  nativeCheckInputs = [ 
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     description = "A captcha library that generates audio and image CAPTCHAs";
