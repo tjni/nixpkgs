@@ -441,6 +441,22 @@ let
         ];
       };
 
+      slack-sdk = super.slack-sdk.overridePythonAttrs (oldAttrs: rec {
+        version = "2.5.0";
+        src = fetchFromGitHub {
+          owner = "slackapi";
+          repo = "python-slackclient";
+          rev = "refs/tags/${version}";
+          hash = "sha256-U//HUe6e41wOOzoaDl4yXPnEASCzpGBIScHStWMN8tk=";
+        };
+        postPatch = ''
+          substituteInPlace setup.py \
+            --replace-fail "pytest-runner" ""
+        '';
+        pythonImportsCheck = [ "slack" ];
+        doCheck = false; # Tests changed a lot for > 3
+      });
+
       tuf = super.tuf.overridePythonAttrs rec {
         version = "2.1.0";
         src = fetchFromGitHub {
@@ -533,7 +549,7 @@ let
   extraBuildInputs = extraPackages python.pkgs;
 
   # Don't forget to run update-component-packages.py after updating
-  hassVersion = "2024.6.1";
+  hassVersion = "2024.6.4";
 
 in python.pkgs.buildPythonApplication rec {
   pname = "homeassistant";
@@ -551,13 +567,13 @@ in python.pkgs.buildPythonApplication rec {
     owner = "home-assistant";
     repo = "core";
     rev = "refs/tags/${version}";
-    hash = "sha256-T6qmmY7AIWUHwxD/WIrr9x685jrXzQ/1brTxWZTKsmw=";
+    hash = "sha256-WIAFTVNHzrKTRONmOc/lq5PvC34PDKF7UfIokLCVzNY=";
   };
 
   # Secondary source is pypi sdist for translations
   sdist = fetchPypi {
     inherit pname version;
-    hash = "sha256-Qp22sOVgxpbU9mglfK+IbWRvuyYm/jR70I4YvnDuF6s=";
+    hash = "sha256-Ymv3AlArAD2rSXQwMhEVeynwhAo8ZMrtV1zUK4U8xqQ=";
   };
 
   build-system = with python.pkgs; [

@@ -20,7 +20,6 @@
   "@webassemblyjs/wasm-text-gen-1.11.1" = "wasmgen";
   "@webassemblyjs/wast-refmt-1.11.1" = "wast-refmt";
   aws-cdk = "cdk";
-  bash-language-server = "bash-language-server";
   cdk8s-cli = "cdk8s";
   cdktf-cli = "cdktf";
   clipboard-cli = "clipboard";
@@ -31,7 +30,6 @@
   fauna-shell = "fauna";
   fkill-cli = "fkill";
   fleek-cli = "fleek";
-  git-run = "gr";
   graphql-cli = "graphql";
   graphql-language-service-cli = "graphql-lsp";
   grunt-cli = "grunt";

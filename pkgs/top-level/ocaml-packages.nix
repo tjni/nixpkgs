@@ -466,6 +466,8 @@ let
 
     eqaf = callPackage ../development/ocaml-modules/eqaf { };
 
+    eqaf-cstruct = callPackage ../development/ocaml-modules/eqaf/cstruct.nix { };
+
     erm_xml = callPackage ../development/ocaml-modules/erm_xml { };
 
     erm_xmpp = callPackage ../development/ocaml-modules/erm_xmpp { };
@@ -479,6 +481,8 @@ let
     extlib-1-7-7 = callPackage ../development/ocaml-modules/extlib/1.7.7.nix { };
 
     ezjsonm = callPackage ../development/ocaml-modules/ezjsonm { };
+
+    ezjsonm-encoding = callPackage ../development/ocaml-modules/ezjsonm-encoding { };
 
     ezxmlm = callPackage ../development/ocaml-modules/ezxmlm { };
 
