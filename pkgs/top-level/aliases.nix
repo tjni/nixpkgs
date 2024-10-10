@@ -230,6 +230,17 @@ mapAliases {
   ccloud-cli = throw "ccloud-cli has been removed, please use confluent-cli instead"; # Added 2023-06-09
   certmgr-selfsigned = certmgr; # Added 2023-11-30
   challenger = taler-challenger; # Added 2024-09-04
+  check_smartmon = throw "'check_smartmon' has been renamed to 'nagiosPlugins.check_smartmon'"; # Added 2024-05-03
+  check_systemd = throw "'check_systemd' has been renamed to 'nagiosPlugins.check_systemd'"; # Added 2024-05-03
+  check_zfs = throw "'check_zfs' has been renamed to 'nagiosPlugins.check_zfs'"; # Added 2024-05-03
+  check-esxi-hardware = throw "'check-esxi-hardware' has been renamed to 'nagiosPlugins.check_esxi_hardware'"; # Added 2024-05-03
+  check-mssql-health = throw "'check-mssql-health' has been renamed to 'nagiosPlugins.check_mssql_health'"; # Added 2024-05-03
+  check-nwc-health = throw "'check-nwc-health' has been renamed to 'nagiosPlugins.check_nwc_health'"; # Added 2024-05-03
+  check-openvpn = throw "'check-openvpn' has been renamed to 'nagiosPlugins.check_openvpn'"; # Added 2024-05-03
+  check-ups-health = throw "'check-ups-health' has been renamed to 'nagiosPlugins.check_ups_health'"; # Added 2024-05-03
+  check-uptime = throw "'check-uptime' has been renamed to 'nagiosPlugins.check_uptime'"; # Added 2024-05-03
+  check-wmiplus = throw "'check-wmiplus' has been renamed to 'nagiosPlugins.check_wmi_plus'"; # Added 2024-05-03
+  checkSSLCert = throw "'checkSSLCert' has been renamed to 'nagiosPlugins.check_ssl_cert'"; # Added 2024-05-03
   chefdk = throw "chefdk has been removed due to being deprecated upstream by Chef Workstation"; # Added 2023-03-22
   chia = throw "chia has been removed. see https://github.com/NixOS/nixpkgs/pull/270254"; # Added 2023-11-30
   chia-dev-tools = throw "chia-dev-tools has been removed. see https://github.com/NixOS/nixpkgs/pull/270254"; # Added 2023-11-30
@@ -297,6 +308,7 @@ mapAliases {
   clang16Stdenv = lowPrio llvmPackages_16.stdenv;
   clang17Stdenv = lowPrio llvmPackages_17.stdenv;
   clang18Stdenv = lowPrio llvmPackages_18.stdenv;
+  clang19Stdenv = lowPrio llvmPackages_19.stdenv;
 
   clang-tools_6 = throw "clang-tools_6 has been removed from nixpkgs"; # Added 2024-01-08
   clang-tools_7 = throw "clang-tools_7 has been removed from nixpkgs"; # Added 2023-11-19
@@ -318,6 +330,7 @@ mapAliases {
   clang-tools_16 = llvmPackages_16.clang-tools; # Added 2024-04-22
   clang-tools_17 = llvmPackages_17.clang-tools; # Added 2024-04-22
   clang-tools_18 = llvmPackages_18.clang-tools; # Added 2024-04-22
+  clang-tools_19 = llvmPackages_19.clang-tools; # Added 2024-08-21
 
   cq-editor = throw "cq-editor has been removed, as it use a dependency that was disabled since python 3.8 and was last updated in 2021"; # Added 2024-05-13
 
@@ -718,6 +731,7 @@ mapAliases {
   imagemagick7 = imagemagick; # Added 2021-02-22
   imagemagick7_light = imagemagick_light; # Added 2021-02-22
   imlib = throw "imlib has been dropped due to the lack of maintenance from upstream since 2004"; # Added 2023-01-04
+  immersed-vr = lib.warn "'immersed-vr' has been renamed to 'immersed'" immersed; # Added 2024-08-11
   indiepass-desktop = throw "indiepass-desktop has been dropped because it does not work with recent Electron versions"; # Added 2024-03-14
   indigenous-desktop = throw "'indigenous-desktop' has been renamed to/replaced by 'indiepass-desktop'"; # Added 2023-11-08
   input-utils = throw "The input-utils package was dropped since it was unmaintained."; # Added 2024-06-21
@@ -817,7 +831,6 @@ mapAliases {
   libbpf_1 = libbpf; # Added 2022-12-06
   libbson = mongoc; # Added 2024-03-11
   libcap_pam = throw "'libcap_pam' has been replaced with 'libcap'"; # Converted to throw 2023-09-10
-  libclc = llvmPackages_18.libclc; # Added 2023-10-28
   libcxxabi = throw "'libcxxabi' was merged into 'libcxx'"; # Converted to throw 2024-03-08
   libdwarf_20210528 = throw "'libdwarf_20210528' has been removed because it is not used in nixpkgs, move to libdwarf"; # Added 2024-03-23
   libgme = game-music-emu; # Added 2022-07-20

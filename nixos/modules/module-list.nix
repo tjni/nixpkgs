@@ -215,7 +215,7 @@
   ./programs/iftop.nix
   ./programs/i3lock.nix
   ./programs/iio-hyprland.nix
-  ./programs/immersed-vr.nix
+  ./programs/immersed.nix
   ./programs/iotop.nix
   ./programs/java.nix
   ./programs/joycond-cemuhook.nix
@@ -1231,6 +1231,7 @@
   ./services/networking/syncthing.nix
   ./services/networking/tailscale.nix
   ./services/networking/tailscale-auth.nix
+  ./services/networking/tailscale-derper.nix
   ./services/networking/tayga.nix
   ./services/networking/tcpcrypt.nix
   ./services/networking/teamspeak3.nix
