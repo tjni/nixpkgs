@@ -370,6 +370,11 @@ in
     nvimRequireCheck = "cmp_neosnippet";
   };
 
+  cmp-nixpkgs-maintainers = super.cmp-nixpkgs-maintainers.overrideAttrs {
+    dependencies = with self; [ nvim-cmp ];
+    nvimRequireCheck = "cmp_nixpkgs_maintainers";
+  };
+
   cmp-npm = super.cmp-npm.overrideAttrs {
     dependencies = with self; [
       nvim-cmp
@@ -2086,6 +2091,14 @@ in
     src = "${taskwarrior2.src}/scripts/vim";
   };
 
+  telekasten-nvim = super.telekasten-nvim.overrideAttrs {
+    dependencies = with self; [
+      plenary-nvim
+      telescope-nvim
+    ];
+    nvimRequireCheck = "telekasten";
+  };
+
   telescope-cheat-nvim = super.telescope-cheat-nvim.overrideAttrs {
     dependencies = with self; [
       sqlite-lua
@@ -2646,6 +2659,17 @@ in
     nvimRequireCheck = "yazi";
   };
 
+  leetcode-nvim = super.leetcode-nvim.overrideAttrs {
+    dependencies = with self; [
+      nui-nvim
+      plenary-nvim
+      telescope-nvim
+    ];
+
+    doInstallCheck = true;
+    nvimRequireCheck = "leetcode";
+  };
+
   YouCompleteMe = super.YouCompleteMe.overrideAttrs {
     buildPhase = ''
       substituteInPlace plugin/youcompleteme.vim \
@@ -2713,7 +2737,6 @@ in
       "coc-metals"
       "coc-pairs"
       "coc-prettier"
-      "coc-python"
       "coc-r-lsp"
       "coc-rls"
       "coc-rust-analyzer"
