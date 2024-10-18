@@ -12,7 +12,7 @@
 
   activationScript = ''
     # will be rebuilt automatically
-    rm -fv $HOME/.cache/ksycoca*
+    rm -fv "$HOME/.cache/ksycoca"*
   '';
 in {
   options = {
@@ -249,10 +249,11 @@ in {
 
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [
+      kdePackages.kwallet
       kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-gtk
     ];
-    xdg.portal.configPackages = mkDefault [kdePackages.xdg-desktop-portal-kde];
+    xdg.portal.configPackages = mkDefault [kdePackages.plasma-workspace];
     services.pipewire.enable = mkDefault true;
 
     # Enable screen reader by default
