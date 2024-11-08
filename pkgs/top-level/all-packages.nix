@@ -36811,9 +36811,7 @@ with pkgs;
     inherit (darwin.apple_sdk.frameworks) Security;
   };
 
-  vector = callPackage ../tools/misc/vector {
-    inherit (darwin.apple_sdk.frameworks) Security CoreServices SystemConfiguration;
-  };
+  vector = callPackage ../tools/misc/vector { };
 
   hjson = with python3Packages; toPythonApplication hjson;
 
