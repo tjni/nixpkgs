@@ -1,7 +1,6 @@
 {
   fetchFromGitHub,
   lib,
-  stdenv,
   postgresql,
   buildPostgresqlExtension,
 }:
@@ -15,6 +14,8 @@ buildPostgresqlExtension rec {
     rev = "v${version}";
     hash = "sha256-/xXnui0S0ZjRw7P8kMAgttHVv8T41aOhM3pM8P0OTig=";
   };
+
+  buildFlags = [ "PG_CFLAGS=-Wno-error=vla" ];
 
   meta = with lib; {
     description = "A Postgres extension for exposing system metrics such as CPU, memory and disk information";
