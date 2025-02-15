@@ -85,6 +85,7 @@
   ./hardware/network/eg25-manager.nix
   ./hardware/network/intel-2200bg.nix
   ./hardware/new-lg4ff.nix
+  ./hardware/nfc-nci.nix
   ./hardware/nitrokey.nix
   ./hardware/onlykey/default.nix
   ./hardware/openrazer.nix
@@ -417,6 +418,7 @@
   ./services/audio/squeezelite.nix
   ./services/audio/tts.nix
   ./services/audio/ympd.nix
+  ./services/autotierfs.nix
   ./services/backup/automysqlbackup.nix
   ./services/backup/bacula.nix
   ./services/backup/borgbackup.nix
@@ -735,7 +737,6 @@
   ./services/matrix/hebbot.nix
   ./services/matrix/hookshot.nix
   ./services/matrix/maubot.nix
-  ./services/matrix/mautrix-facebook.nix
   ./services/matrix/mautrix-meta.nix
   ./services/matrix/mautrix-signal.nix
   ./services/matrix/mautrix-telegram.nix
@@ -861,6 +862,7 @@
   ./services/misc/radicle.nix
   ./services/misc/readarr.nix
   ./services/misc/realmd.nix
+  ./services/misc/recyclarr.nix
   ./services/misc/redlib.nix
   ./services/misc/redmine.nix
   ./services/misc/renovate.nix
@@ -924,10 +926,12 @@
   ./services/monitoring/gatus.nix
   ./services/monitoring/gitwatch.nix
   ./services/monitoring/glances.nix
+  ./services/monitoring/glpi-agent.nix
   ./services/monitoring/goss.nix
   ./services/monitoring/grafana-agent.nix
   ./services/monitoring/grafana-image-renderer.nix
   ./services/monitoring/grafana-reporter.nix
+  ./services/monitoring/grafana-to-ntfy.nix
   ./services/monitoring/grafana.nix
   ./services/monitoring/graphite.nix
   ./services/monitoring/hdaps.nix
@@ -1266,6 +1270,7 @@
   ./services/networking/spacecookie.nix
   ./services/networking/spiped.nix
   ./services/networking/squid.nix
+  ./services/networking/g3proxy.nix
   ./services/networking/ssh/sshd.nix
   ./services/networking/sslh.nix
   ./services/networking/strongswan-swanctl/module.nix
@@ -1497,6 +1502,7 @@
   ./services/web-apps/hedgedoc.nix
   ./services/web-apps/hledger-web.nix
   ./services/web-apps/homebox.nix
+  ./services/web-apps/homer.nix
   ./services/web-apps/honk.nix
   ./services/web-apps/icingaweb2/icingaweb2.nix
   ./services/web-apps/icingaweb2/module-monitoring.nix

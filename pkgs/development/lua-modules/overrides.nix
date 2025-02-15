@@ -30,6 +30,7 @@
 , libmpack
 , libmysqlclient
 , libpsl
+, libpq
 , libuuid
 , libuv
 , libxcrypt
@@ -44,7 +45,6 @@
 , openssl
 , pcre
 , pkg-config
-, postgresql
 , readline
 , rustPlatform
 , sol2
@@ -361,7 +361,7 @@ in
 
   luadbi-postgresql = prev.luadbi-postgresql.overrideAttrs (oa: {
     buildInputs = oa.buildInputs ++ [
-      (lib.getDev postgresql)
+      (lib.getDev libpq)
     ];
   });
 
@@ -517,9 +517,13 @@ in
     meta.broken = stdenv.hostPlatform.isDarwin;
   });
 
-  lush-nvim = prev.lush-nvim.overrideAttrs (drv: {
-    doCheck = false;
-  });
+  lush-nvim = prev.lush-nvim.overrideAttrs {
+    # Remove dangling symlink created during installation because we don't copy the source CREATE.md it links to
+    # Using a generic method because path changes depending on if building luaPackage or vimPlugin
+    postInstall = ''
+      find -L $out -type l -name "README.md" -print -delete
+    '';
+  };
 
   luuid = prev.luuid.overrideAttrs (oa: {
     externalDeps = [
@@ -570,9 +574,6 @@ in
     nativeCheckInputs = oa.nativeCheckInputs ++ [
       final.nlua final.busted neovim-unwrapped
     ];
-
-    # stick to neovim's lua version else loading shared libraries fail
-    meta = oa.meta // { broken = !isLua51; };
 
     checkPhase = ''
       runHook preCheck
@@ -860,6 +861,24 @@ in
       lua.pkgs.luarocks-build-rust-mlua
     ];
 
+  });
+
+  tree-sitter-http = prev.tree-sitter-http.overrideAttrs (oa: {
+    propagatedBuildInputs =
+      let
+        # HACK: luarocks-nix puts rockspec build dependencies in the nativeBuildInputs,
+        # but that doesn't seem to work
+        lua = lib.head oa.propagatedBuildInputs;
+      in
+      oa.propagatedBuildInputs
+      ++ [
+        lua.pkgs.luarocks-build-treesitter-parser
+        tree-sitter
+      ];
+
+    preInstall = ''
+      export HOME="$TMPDIR";
+    '';
   });
 
   tree-sitter-norg = prev.tree-sitter-norg.overrideAttrs (oa: {
