@@ -112,6 +112,7 @@ in {
   aesmd = runTestOn ["x86_64-linux"] ./aesmd.nix;
   agate = runTest ./web-servers/agate.nix;
   agda = handleTest ./agda.nix {};
+  age-plugin-tpm-decrypt = runTest ./age-plugin-tpm-decrypt.nix;
   agorakit = runTest ./web-apps/agorakit.nix;
   airsonic = handleTest ./airsonic.nix {};
   akkoma = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./akkoma.nix {};
@@ -165,6 +166,7 @@ in {
   boot = handleTestOn ["x86_64-linux" "aarch64-linux"] ./boot.nix {};
   bootspec = handleTestOn ["x86_64-linux"] ./bootspec.nix {};
   boot-stage1 = handleTest ./boot-stage1.nix {};
+  boot-stage2 = handleTest ./boot-stage2.nix {};
   borgbackup = handleTest ./borgbackup.nix {};
   borgmatic = handleTest ./borgmatic.nix {};
   botamusique = handleTest ./botamusique.nix {};
@@ -403,6 +405,7 @@ in {
   gollum = handleTest ./gollum.nix {};
   gonic = handleTest ./gonic.nix {};
   google-oslogin = handleTest ./google-oslogin {};
+  gopro-tool = handleTest ./gopro-tool.nix {};
   goss = handleTest ./goss.nix {};
   gotenberg = handleTest ./gotenberg.nix {};
   gotify-server = handleTest ./gotify-server.nix {};
@@ -418,6 +421,7 @@ in {
   guacamole-server = handleTest ./guacamole-server.nix {};
   guix = handleTest ./guix {};
   gvisor = handleTest ./gvisor.nix {};
+  h2o = discoverTests (import ./web-servers/h2o { inherit handleTestOn; });
   hadoop = import ./hadoop { inherit handleTestOn; package=pkgs.hadoop; };
   hadoop_3_3 = import ./hadoop { inherit handleTestOn; package=pkgs.hadoop_3_3; };
   hadoop2 = import ./hadoop { inherit handleTestOn; package=pkgs.hadoop2; };
@@ -436,6 +440,7 @@ in {
   hedgedoc = handleTest ./hedgedoc.nix {};
   herbstluftwm = handleTest ./herbstluftwm.nix {};
   homebox = handleTest ./homebox.nix {};
+  homer = handleTest ./homer {};
   homepage-dashboard = handleTest ./homepage-dashboard.nix {};
   honk = runTest ./honk.nix;
   installed-tests = pkgs.recurseIntoAttrs (handleTest ./installed-tests {});
@@ -562,14 +567,17 @@ in {
   #logstash = handleTest ./logstash.nix {};
   lomiri = discoverTests (import ./lomiri.nix);
   lomiri-calculator-app = runTest ./lomiri-calculator-app.nix;
+  lomiri-calendar-app = runTest ./lomiri-calendar-app.nix;
   lomiri-camera-app = runTest ./lomiri-camera-app.nix;
   lomiri-clock-app = runTest ./lomiri-clock-app.nix;
   lomiri-docviewer-app = runTest ./lomiri-docviewer-app.nix;
   lomiri-filemanager-app = runTest ./lomiri-filemanager-app.nix;
   lomiri-mediaplayer-app = runTest ./lomiri-mediaplayer-app.nix;
+  lomiri-music-app = runTest ./lomiri-music-app.nix;
   lomiri-gallery-app = runTest ./lomiri-gallery-app.nix;
   lomiri-system-settings = handleTest ./lomiri-system-settings.nix {};
   lorri = handleTest ./lorri/default.nix {};
+  lxqt = handleTest ./lxqt.nix {};
   ly = handleTest ./ly.nix {};
   maddy = discoverTests (import ./maddy { inherit handleTest; });
   maestral = handleTest ./maestral.nix {};
@@ -615,7 +623,7 @@ in {
   misc = handleTest ./misc.nix {};
   misskey = handleTest ./misskey.nix {};
   mjolnir = handleTest ./matrix/mjolnir.nix {};
-  mobilizon = handleTest ./mobilizon.nix {};
+  mobilizon = runTest ./mobilizon.nix;
   mod_perl = handleTest ./mod_perl.nix {};
   molly-brown = handleTest ./molly-brown.nix {};
   mollysocket = handleTest ./mollysocket.nix { };
@@ -818,6 +826,7 @@ in {
   pgadmin4 = handleTest ./pgadmin4.nix {};
   pgbouncer = handleTest ./pgbouncer.nix {};
   pghero = runTest ./pghero.nix;
+  pgweb = runTest ./pgweb.nix;
   pgmanage = handleTest ./pgmanage.nix {};
   phosh = handleTest ./phosh.nix {};
   photonvision = handleTest ./photonvision.nix {};
@@ -918,7 +927,7 @@ in {
   rshim = handleTest ./rshim.nix {};
   rspamd = handleTest ./rspamd.nix {};
   rspamd-trainer = handleTest ./rspamd-trainer.nix {};
-  rss-bridge = handleTest ./web-apps/rss-bridge.nix {};
+  rss-bridge = handleTest ./web-apps/rss-bridge {};
   rss2email = handleTest ./rss2email.nix {};
   rstudio-server = handleTest ./rstudio-server.nix {};
   rsyncd = handleTest ./rsyncd.nix {};

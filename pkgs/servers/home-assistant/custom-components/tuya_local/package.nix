@@ -11,13 +11,13 @@
 buildHomeAssistantComponent rec {
   owner = "make-all";
   domain = "tuya_local";
-  version = "2024.11.4";
+  version = "2025.2.0";
 
   src = fetchFromGitHub {
     inherit owner;
     repo = "tuya-local";
     tag = version;
-    hash = "sha256-Mmcq0GBWiE6IWUVL6q9lw29wKEymAQn439/pOSqWgdQ=";
+    hash = "sha256-G/+mAq++bJ2Z41B6gi/izBLvuZwew3Tx/0mGZm4g6TE=";
   };
 
   dependencies = [
