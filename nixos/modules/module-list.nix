@@ -742,6 +742,7 @@
   ./services/matrix/dendrite.nix
   ./services/matrix/hebbot.nix
   ./services/matrix/hookshot.nix
+  ./services/matrix/matrix-alertmanager.nix
   ./services/matrix/maubot.nix
   ./services/matrix/mautrix-meta.nix
   ./services/matrix/mautrix-signal.nix
@@ -751,6 +752,7 @@
   ./services/matrix/mx-puppet-discord.nix
   ./services/matrix/pantalaimon.nix
   ./services/matrix/synapse.nix
+  ./services/matrix/synapse-auto-compressor.nix
   ./services/misc/airsonic.nix
   ./services/misc/amazon-ssm-agent.nix
   ./services/misc/ananicy.nix
@@ -821,7 +823,6 @@
   ./services/misc/klipper.nix
   ./services/misc/languagetool.nix
   ./services/misc/leaps.nix
-  ./services/misc/lidarr.nix
   ./services/misc/lifecycled.nix
   ./services/misc/llama-cpp.nix
   ./services/misc/logkeys.nix
@@ -861,12 +862,9 @@
   ./services/misc/portunus.nix
   ./services/misc/preload.nix
   ./services/misc/private-gpt.nix
-  ./services/misc/prowlarr.nix
   ./services/misc/pufferpanel.nix
   ./services/misc/pykms.nix
-  ./services/misc/radarr.nix
   ./services/misc/radicle.nix
-  ./services/misc/readarr.nix
   ./services/misc/realmd.nix
   ./services/misc/rebuilderd.nix
   ./services/misc/recyclarr.nix
@@ -878,13 +876,18 @@
   ./services/misc/rshim.nix
   ./services/misc/safeeyes.nix
   ./services/misc/sdrplay.nix
+  ./services/misc/servarr/lidarr.nix
+  ./services/misc/servarr/prowlarr.nix
+  ./services/misc/servarr/radarr.nix
+  ./services/misc/servarr/readarr.nix
+  ./services/misc/servarr/sonarr.nix
+  ./services/misc/servarr/whisparr.nix
   ./services/misc/serviio.nix
   ./services/misc/sickbeard.nix
   ./services/misc/signald.nix
   ./services/misc/siproxd.nix
   ./services/misc/snapper.nix
   ./services/misc/soft-serve.nix
-  ./services/misc/sonarr.nix
   ./services/misc/sourcehut
   ./services/misc/spice-autorandr.nix
   ./services/misc/spice-vdagentd.nix
@@ -910,7 +913,6 @@
   ./services/misc/wastebin.nix
   ./services/misc/weechat.nix
   ./services/misc/workout-tracker.nix
-  ./services/misc/whisparr.nix
   ./services/misc/xmrig.nix
   ./services/misc/ytdl-sub.nix
   ./services/misc/zoneminder.nix
@@ -962,6 +964,7 @@
   ./services/monitoring/opentelemetry-collector.nix
   ./services/monitoring/osquery.nix
   ./services/monitoring/parsedmarc.nix
+  ./services/monitoring/pgscv.nix
   ./services/monitoring/prometheus/alertmanager-gotify-bridge.nix
   ./services/monitoring/prometheus/alertmanager-irc-relay.nix
   ./services/monitoring/prometheus/alertmanager-webhook-logger.nix
@@ -1314,6 +1317,7 @@
   ./services/networking/trickster.nix
   ./services/networking/twingate.nix
   ./services/networking/ucarp.nix
+  ./services/networking/umurmur.nix
   ./services/networking/unbound.nix
   ./services/networking/unifi.nix
   ./services/networking/uptermd.nix
@@ -1501,10 +1505,12 @@
   ./services/web-apps/gancio.nix
   ./services/web-apps/gerrit.nix
   ./services/web-apps/glance.nix
+  ./services/web-apps/glitchtip.nix
   ./services/web-apps/gotify-server.nix
   ./services/web-apps/gotosocial.nix
   ./services/web-apps/grav.nix
   ./services/web-apps/grocy.nix
+  ./services/web-apps/part-db.nix
   ./services/web-apps/pixelfed.nix
   ./services/web-apps/goatcounter.nix
   ./services/web-apps/guacamole-client.nix
