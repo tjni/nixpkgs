@@ -190,7 +190,7 @@ in {
   avahi = handleTest ./avahi.nix {};
   avahi-with-resolved = handleTest ./avahi.nix { networkd = true; };
   ayatana-indicators = runTest ./ayatana-indicators.nix;
-  babeld = handleTest ./babeld.nix {};
+  babeld = runTest ./babeld.nix;
   bazarr = handleTest ./bazarr.nix {};
   bcachefs = handleTestOn ["x86_64-linux" "aarch64-linux"] ./bcachefs.nix {};
   beanstalkd = handleTest ./beanstalkd.nix {};
@@ -212,7 +212,7 @@ in {
   boot-stage2 = handleTest ./boot-stage2.nix {};
   borgbackup = handleTest ./borgbackup.nix {};
   borgmatic = handleTest ./borgmatic.nix {};
-  botamusique = handleTest ./botamusique.nix {};
+  botamusique = runTest ./botamusique.nix;
   bpf = handleTestOn ["x86_64-linux" "aarch64-linux"] ./bpf.nix {};
   bpftune = handleTest ./bpftune.nix {};
   breitbandmessung = handleTest ./breitbandmessung.nix {};
@@ -387,16 +387,32 @@ in {
   filesystems-overlayfs = runTest ./filesystems-overlayfs.nix;
   firefly-iii = handleTest ./firefly-iii.nix {};
   firefly-iii-data-importer = handleTest ./firefly-iii-data-importer.nix {};
-  firefox = handleTest ./firefox.nix { firefoxPackage = pkgs.firefox; };
-  firefox-beta = handleTest ./firefox.nix { firefoxPackage = pkgs.firefox-beta; };
-  firefox-devedition = handleTest ./firefox.nix { firefoxPackage = pkgs.firefox-devedition; };
-  firefox-esr    = handleTest ./firefox.nix { firefoxPackage = pkgs.firefox-esr; }; # used in `tested` job
-  firefox-esr-128 = handleTest ./firefox.nix { firefoxPackage = pkgs.firefox-esr-128; };
+  firefox = runTest {
+    imports = [./firefox.nix ];
+    _module.args.firefoxPackage = pkgs.firefox;
+  };
+  firefox-beta = runTest {
+    imports = [ ./firefox.nix ] ;
+    _module.args.firefoxPackage = pkgs.firefox-beta;
+  };
+  firefox-devedition = runTest {
+    imports = [ ./firefox.nix ];
+    _module.args.firefoxPackage = pkgs.firefox-devedition;
+  };
+  firefox-esr = runTest {
+     # used in `tested` job
+    imports = [ ./firefox.nix ] ;
+    _module.args.firefoxPackage = pkgs.firefox-esr;
+  };
+  firefox-esr-128 = runTest {
+    imports = [ ./firefox.nix ] ;
+    _module.args.firefoxPackage = pkgs.firefox-esr-128;
+  };
   firefoxpwa = handleTest ./firefoxpwa.nix {};
   firejail = handleTest ./firejail.nix {};
   firewall = handleTest ./firewall.nix { nftables = false; };
   firewall-nftables = handleTest ./firewall.nix { nftables = true; };
-  fish = handleTest ./fish.nix {};
+  fish = runTest ./fish.nix;
   flannel = handleTestOn ["x86_64-linux"] ./flannel.nix {};
   flaresolverr = handleTest ./flaresolverr.nix {};
   flood = handleTest ./flood.nix {};
@@ -410,7 +426,7 @@ in {
   freeswitch = handleTest ./freeswitch.nix {};
   freetube = discoverTests (import ./freetube.nix);
   freshrss = handleTest ./freshrss {};
-  frigate = handleTest ./frigate.nix {};
+  frigate = runTest ./frigate.nix;
   frp = handleTest ./frp.nix {};
   frr = handleTest ./frr.nix {};
   fsck = handleTest ./fsck.nix {};
@@ -434,6 +450,7 @@ in {
   gitolite-fcgiwrap = handleTest ./gitolite-fcgiwrap.nix {};
   glance = runTest ./glance.nix;
   glances = runTest ./glances.nix;
+  glitchtip = runTest ./glitchtip.nix;
   glusterfs = handleTest ./glusterfs.nix {};
   gnome = handleTest ./gnome.nix {};
   gnome-extensions = handleTest ./gnome-extensions.nix {};
@@ -443,7 +460,7 @@ in {
   gnupg = handleTest ./gnupg.nix {};
   goatcounter = handleTest ./goatcounter.nix {};
   go-camo = handleTest ./go-camo.nix { };
-  go-neb = handleTest ./go-neb.nix {};
+  go-neb = runTest ./go-neb.nix;
   gobgpd = handleTest ./gobgpd.nix {};
   gocd-agent = handleTest ./gocd-agent.nix {};
   gocd-server = handleTest ./gocd-server.nix {};
@@ -463,7 +480,7 @@ in {
   greetd-no-shadow = handleTest ./greetd-no-shadow.nix {};
   grocy = handleTest ./grocy.nix {};
   grow-partition = runTest ./grow-partition.nix;
-  grub = import ./grub.nix { inherit pkgs runTest; };
+  grub = handleTest ./grub.nix {};
   guacamole-server = handleTest ./guacamole-server.nix {};
   guix = handleTest ./guix {};
   gvisor = handleTest ./gvisor.nix {};
@@ -482,7 +499,6 @@ in {
   hbase_2_5 = handleTest ./hbase.nix { package=pkgs.hbase_2_5; };
   hbase_2_4 = handleTest ./hbase.nix { package=pkgs.hbase_2_4; };
   hbase3 = handleTest ./hbase.nix { package=pkgs.hbase3; };
-  hddfancontrol = handleTest ./hddfancontrol.nix {};
   hedgedoc = handleTest ./hedgedoc.nix {};
   herbstluftwm = handleTest ./herbstluftwm.nix {};
   homebox = handleTest ./homebox.nix {};
@@ -559,7 +575,7 @@ in {
   kavita = handleTest ./kavita.nix {};
   kbd-setfont-decompress = handleTest ./kbd-setfont-decompress.nix {};
   kbd-update-search-paths-patch = handleTest ./kbd-update-search-paths-patch.nix {};
-  kea = handleTest ./kea.nix {};
+  kea = runTest ./kea.nix;
   keepalived = handleTest ./keepalived.nix {};
   keepassxc = handleTest ./keepassxc.nix {};
   kerberos = handleTest ./kerberos/default.nix {};
@@ -573,7 +589,7 @@ in {
   keymap = handleTest ./keymap.nix {};
   kimai = handleTest ./kimai.nix {};
   kmonad = runTest ./kmonad.nix;
-  knot = handleTest ./knot.nix {};
+  knot = runTest ./knot.nix;
   komga = handleTest ./komga.nix {};
   krb5 = discoverTests (import ./krb5);
   ksm = handleTest ./ksm.nix {};
@@ -622,7 +638,7 @@ in {
   lomiri-mediaplayer-app = runTest ./lomiri-mediaplayer-app.nix;
   lomiri-music-app = runTest ./lomiri-music-app.nix;
   lomiri-gallery-app = runTest ./lomiri-gallery-app.nix;
-  lomiri-system-settings = handleTest ./lomiri-system-settings.nix {};
+  lomiri-system-settings = runTest ./lomiri-system-settings.nix;
   lorri = handleTest ./lorri/default.nix {};
   lxqt = handleTest ./lxqt.nix {};
   ly = handleTest ./ly.nix {};
@@ -643,6 +659,7 @@ in {
   mate-wayland = handleTest ./mate-wayland.nix {};
   matter-server = handleTest ./matter-server.nix {};
   matomo = runTest ./matomo.nix;
+  matrix-alertmanager = runTest ./matrix/matrix-alertmanager.nix;
   matrix-appservice-irc = runTest ./matrix/appservice-irc.nix;
   matrix-conduit = handleTest ./matrix/conduit.nix {};
   matrix-synapse = handleTest ./matrix/synapse.nix {};
@@ -735,8 +752,8 @@ in {
   networking.networkmanager = handleTest ./networking/networkmanager.nix {};
   netbox_3_6 = handleTest ./web-apps/netbox.nix { netbox = pkgs.netbox_3_6; };
   netbox_3_7 = handleTest ./web-apps/netbox.nix { netbox = pkgs.netbox_3_7; };
-  netbox_4_0 = handleTest ./web-apps/netbox.nix { netbox = pkgs.netbox_4_0; };
   netbox_4_1 = handleTest ./web-apps/netbox.nix { netbox = pkgs.netbox_4_1; };
+  netbox_4_2 = handleTest ./web-apps/netbox.nix { netbox = pkgs.netbox_4_2; };
   netbox-upgrade = handleTest ./web-apps/netbox-upgrade.nix {};
   # TODO: put in networking.nix after the test becomes more complete
   networkingProxy = handleTest ./networking-proxy.nix {};
@@ -798,7 +815,7 @@ in {
   nixpkgs = pkgs.callPackage ../modules/misc/nixpkgs/test.nix { inherit evalMinimalConfig; };
   nixseparatedebuginfod = handleTest ./nixseparatedebuginfod.nix {};
   node-red = handleTest ./node-red.nix {};
-  nomad = handleTest ./nomad.nix {};
+  nomad = runTest ./nomad.nix;
   non-default-filesystems = handleTest ./non-default-filesystems.nix {};
   non-switchable-system = runTest ./non-switchable-system.nix;
   noto-fonts = handleTest ./noto-fonts.nix {};
@@ -886,7 +903,7 @@ in {
   phylactery = handleTest ./web-apps/phylactery.nix {};
   pict-rs = handleTest ./pict-rs.nix {};
   pingvin-share = handleTest ./pingvin-share.nix {} ;
-  pinnwand = handleTest ./pinnwand.nix {};
+  pinnwand = runTest ./pinnwand.nix;
   plantuml-server = handleTest ./plantuml-server.nix {};
   plasma-bigscreen = handleTest ./plasma-bigscreen.nix {};
   plasma5 = handleTest ./plasma5.nix {};
@@ -1019,7 +1036,7 @@ in {
   slurm = handleTest ./slurm.nix {};
   snmpd = handleTest ./snmpd.nix {};
   smokeping = handleTest ./smokeping.nix {};
-  snapcast = handleTest ./snapcast.nix {};
+  snapcast = runTest ./snapcast.nix;
   snapper = handleTest ./snapper.nix {};
   snipe-it = runTest ./web-apps/snipe-it.nix;
   soapui = handleTest ./soapui.nix {};
@@ -1051,7 +1068,7 @@ in {
   stub-ld = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./stub-ld.nix {};
   stunnel = handleTest ./stunnel.nix {};
   sudo = handleTest ./sudo.nix {};
-  sudo-rs = handleTest ./sudo-rs.nix {};
+  sudo-rs = runTest ./sudo-rs.nix;
   sunshine = handleTest ./sunshine.nix {};
   suricata = handleTest ./suricata.nix {};
   suwayomi-server = handleTest ./suwayomi-server.nix {};
@@ -1186,6 +1203,7 @@ in {
   ucarp = handleTest ./ucarp.nix {};
   udisks2 = handleTest ./udisks2.nix {};
   ulogd = handleTest ./ulogd/ulogd.nix {};
+  umurmur = handleTest ./umurmur.nix {};
   unbound = handleTest ./unbound.nix {};
   unifi = handleTest ./unifi.nix {};
   unit-php = handleTest ./web-servers/unit-php.nix {};
