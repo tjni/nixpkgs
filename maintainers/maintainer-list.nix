@@ -6267,12 +6267,6 @@
     githubId = 875324;
     name = "David Johnson";
   };
-  dmrauh = {
-    email = "dmrauh@posteo.de";
-    github = "dmrauh";
-    githubId = 37698547;
-    name = "Dominik Michael Rauh";
-  };
   dmvianna = {
     email = "dmlvianna@gmail.com";
     github = "dmvianna";
@@ -13557,6 +13551,12 @@
     github = "LEXUGE";
     githubId = 13804737;
     keys = [ { fingerprint = "7FE2 113A A08B 695A C8B8  DDE6 AE53 B4C2 E58E DD45"; } ];
+  };
+  lf- = {
+    name = "Jade Lovelace";
+    github = "lf-";
+    githubId = 6652840;
+    matrix = "@jade_:matrix.org";
   };
   lgbishop = {
     email = "lachlan.bishop@hotmail.com";
@@ -24951,10 +24951,11 @@
     name = "Mason Mackaman";
   };
   usertam = {
-    email = "nix@usertam.dev";
+    name = "Samuel Tam";
+    email = "code@usertam.dev";
     github = "usertam";
     githubId = 22500027;
-    name = "Samuel Tam";
+    keys = [ { fingerprint = "EC4E E490 3C82 3698 2CAB  D206 2D87 60B0 229E 2560"; } ];
   };
   uskudnik = {
     email = "urban.skudnik@gmail.com";
