@@ -216,6 +216,24 @@ with lib.maintainers;
     enableFeatureFreezePing = true;
   };
 
+  cosmic = {
+    members = [
+      a-kenji
+      ahoneybun
+      drakon64
+      griffi-gh
+      HeitorAugustoLN
+      nyabinary
+      pandapip1
+      qyliss
+      thefossguy
+    ];
+    githubTeams = [ "cosmic" ];
+    shortName = "cosmic";
+    scope = "Maintain the COSMIC DE and related packages.";
+    enableFeatureFreezePing = true;
+  };
+
   cuda = {
     members = [
       connorbaker
@@ -813,6 +831,7 @@ with lib.maintainers;
       _9999years
       Gabriella439
       curran
+      lf-
     ];
     scope = "Group registry for packages maintained by Mercury";
     shortName = "Mercury Employees";
@@ -836,6 +855,8 @@ with lib.maintainers;
     members = [
       raitobezarius
       qyriad
+      _9999years
+      lf-
     ];
     scope = "Maintain the Lix package manager inside of Nixpkgs.";
     shortName = "Lix ecosystem";
@@ -1180,6 +1201,7 @@ with lib.maintainers;
       hehongbo
       lach
       sigmasquadron
+      rane
     ];
     scope = "Maintain the Xen Project Hypervisor and the related tooling ecosystem.";
     shortName = "Xen Project Hypervisor";

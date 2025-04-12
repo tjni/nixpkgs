@@ -610,7 +610,7 @@ in
     ];
   };
 
-  codeium-nvim =
+  windsurf-nvim =
     let
       # Update according to https://github.com/Exafunction/codeium.nvim/blob/main/lua/codeium/versions.json
       codeiumVersion = "1.20.9";
@@ -648,7 +648,7 @@ in
       };
 
     in
-    super.codeium-nvim.overrideAttrs {
+    super.windsurf-nvim.overrideAttrs {
       dependencies = [ self.plenary-nvim ];
       buildPhase = ''
         cat << EOF > lua/codeium/installation_defaults.lua
@@ -1447,7 +1447,7 @@ in
     ];
     buildInputs = [ curl ];
     postPatch = ''
-      substituteInPlace lua/kulala/config/init.lua \
+      substituteInPlace lua/kulala/config/defaults.lua \
         --replace-fail 'curl_path = "curl"' 'curl_path = "${lib.getExe curl}"'
     '';
   };
@@ -2153,6 +2153,13 @@ in
     ];
   };
 
+  neovim-trunk = super.neovim-trunk.overrideAttrs {
+    dependencies = with self; [
+      plenary-nvim
+      telescope-nvim
+    ];
+  };
+
   nlsp-settings-nvim = super.nlsp-settings-nvim.overrideAttrs {
     dependencies = [ self.nvim-lspconfig ];
   };
@@ -2214,6 +2221,7 @@ in
       "nvchad.themes.mappings"
       "nvchad.cheatsheet.grid"
       "nvchad.cheatsheet.simple"
+      "nvchad.blink.config"
     ];
   };
 
@@ -2579,6 +2587,7 @@ in
       # Pickers, can use telescope or fzf-lua
       fzf-lua
       telescope-nvim
+      snacks-nvim
     ];
     dependencies = with self; [
       plenary-nvim
@@ -2700,6 +2709,9 @@ in
     checkInputs = [
       curl
       ripgrep
+      # Optional integrations
+      self.blink-cmp
+      self.nvim-cmp
     ];
   };
 
