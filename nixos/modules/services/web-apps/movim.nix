@@ -58,7 +58,7 @@ let
         // lib.optionalAttrs (cfg.database.type == "postgresql") {
           withPostgreSQL = true;
         }
-        // lib.optionalAttrs (cfg.database.type == "mysql") {
+        // lib.optionalAttrs (cfg.database.type == "mariadb") {
           withMySQL = true;
         }
       );
@@ -128,10 +128,8 @@ let
               ''
                 echo -n "Precompressing static files with Brotli …"
                 find ${appDir}/public -type f ${findTextFileNames} -print0 \
-                  | xargs -0 -n 1 -P $NIX_BUILD_CORES ${pkgs.writeShellScript "movim_precompress_broti" ''
-                    file="$1"
-                    ${lib.getExe brotli.package} --keep --quality=${builtins.toString brotli.compressionLevel} --output=$file.br $file
-                  ''}
+                  | xargs -0 -P$NIX_BUILD_CORES -n1 -I{} \
+                      ${lib.getExe brotli.package} --keep --quality=${builtins.toString brotli.compressionLevel} --output={}.br {}
                 echo " done."
               ''
             )
@@ -139,10 +137,8 @@ let
               ''
                 echo -n "Precompressing static files with Gzip …"
                 find ${appDir}/public -type f ${findTextFileNames} -print0 \
-                  | xargs -0 -n 1 -P $NIX_BUILD_CORES ${pkgs.writeShellScript "movim_precompress_gzip" ''
-                    file="$1"
-                    ${lib.getExe gzip.package} -c -${builtins.toString gzip.compressionLevel} $file > $file.gz
-                  ''}
+                  | xargs -0 -P$NIX_BUILD_CORES -n1 -I{} \
+                      ${lib.getExe gzip.package} -c -${builtins.toString gzip.compressionLevel} {} > {}.gz
                 echo " done."
               ''
             )
@@ -172,7 +168,7 @@ let
   dbService =
     {
       "postgresql" = "postgresql.service";
-      "mysql" = "mysql.service";
+      "mariadb" = "mysql.service";
     }
     .${cfg.database.type};
 
@@ -479,10 +475,10 @@ in
       database = {
         type = mkOption {
           type = types.enum [
-            "mysql"
+            "mariadb"
             "postgresql"
           ];
-          example = "mysql";
+          example = "mariadb";
           default = "postgresql";
           description = "Database engine to use.";
         };
@@ -625,7 +621,7 @@ in
             DB_DRIVER =
               {
                 "postgresql" = "pgsql";
-                "mysql" = "mysql";
+                "mariadb" = "mysql";
               }
               .${cfg.database.type};
             DB_HOST = "localhost";
@@ -795,7 +791,7 @@ in
         }
       );
 
-      mysql = mkIf (cfg.database.createLocally && cfg.database.type == "mysql") {
+      mysql = mkIf (cfg.database.createLocally && cfg.database.type == "mariadb") {
         enable = mkDefault true;
         package = mkDefault pkgs.mariadb;
         ensureDatabases = [ cfg.database.name ];

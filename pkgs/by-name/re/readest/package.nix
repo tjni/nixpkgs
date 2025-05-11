@@ -15,17 +15,18 @@
   nix-update-script,
   moreutils,
   jq,
+  gst_all_1,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "readest";
-  version = "0.9.29";
+  version = "0.9.40";
 
   src = fetchFromGitHub {
     owner = "readest";
     repo = "readest";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-2L5Wyl3xWjiJCjwUq9mcKe/hnDeHjNnhHgFPISNqfk0=";
+    hash = "sha256-GpdlxDwjWveFvkGP2pju5cMlXPbjOOxEIdmpxz6RNTw=";
     fetchSubmodules = true;
   };
 
@@ -38,14 +39,14 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   pnpmDeps = pnpm_9.fetchDeps {
     inherit (finalAttrs) pname version src;
-    hash = "sha256-VcPxhCpDrKaqKtGMsvPwXwniPy0rbJ/i03gbZ3i87aE=";
+    hash = "sha256-+fJbQmoa89WSfA4dteUSRoEfgEN38tsHZiuWyOvuvhw=";
   };
 
   pnpmRoot = "../..";
 
   useFetchCargoVendor = true;
 
-  cargoHash = "sha256-bRIZcR8UNE78k5cbOt6GQM+PlFVHR2qV7eB82Y+abZw=";
+  cargoHash = "sha256-5mWnKjV9FBgO3trYZyOe+rWFMnJkp17NEbBz7gLg6tw=";
 
   cargoRoot = "../..";
 
@@ -78,6 +79,11 @@ rustPlatform.buildRustPackage (finalAttrs: {
     gtk3
     librsvg
     openssl
+    # TTS
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
   ];
 
   preBuild = ''

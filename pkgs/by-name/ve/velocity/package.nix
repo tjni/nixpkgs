@@ -35,13 +35,13 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "velocity";
-  version = "3.4.0-unstable-2025-03-27";
+  version = "3.4.0-unstable-2025-04-30";
 
   src = fetchFromGitHub {
     owner = "PaperMC";
     repo = "Velocity";
-    rev = "d2cd79185b56bab1adbd45acb1caf0ea7f24d84e";
-    hash = "sha256-WnXDBofr2zkkNvuFYG/6AijgzuDR/8CISafmGDXazgc=";
+    rev = "b411a0fa09f76aec062921b77642828408f0099f";
+    hash = "sha256-R61N4OxS5r4vtZC9IRGX1aizj6J5JB6nVP09+q1pyUo=";
   };
 
   nativeBuildInputs =
@@ -122,6 +122,7 @@ stdenv.mkDerivation (finalAttrs: {
       rm -rf "$tmpdir"
 
       update-source-version "$UPDATE_NIX_ATTR_PATH" "$main_version-unstable-$commit_date" --rev="$commit_hash"
+      $(nix-build -A velocity.mitmCache.updateScript)
     '';
     tests.velocity = nixosTests.velocity;
   };

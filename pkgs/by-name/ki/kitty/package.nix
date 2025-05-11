@@ -28,11 +28,6 @@
   installShellFiles,
   dbus,
   sudo,
-  Libsystem,
-  Cocoa,
-  Kernel,
-  UniformTypeIdentifiers,
-  UserNotifications,
   libcanberra,
   libicns,
   wayland-scanner,
@@ -85,16 +80,9 @@ buildPythonApplication rec {
       xxHash
     ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Cocoa
-      Kernel
-      UniformTypeIdentifiers
-      UserNotifications
       libpng
       python3
       zlib
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
-      Libsystem
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       fontconfig
@@ -159,6 +147,12 @@ buildPythonApplication rec {
     # Skip `test_ssh_bootstrap_with_different_launchers` when launcher is `zsh` since it causes:
     # OSError: master_fd is in error condition
     ./disable-test_ssh_bootstrap_with_different_launchers.patch
+
+    # Makes man page generation respect SOURCE_DATE_EPOCH. Drop on next kitty release https://github.com/kovidgoyal/kitty/pull/8509
+    ./fix-timestamp-reproducibility.patch
+
+    # Ensures deterministic ordering of fish shell completions. Drop on next kitty release https://github.com/kovidgoyal/kitty/pull/8509
+    ./fix-fish-completion-ordering.patch
   ];
 
   hardeningDisable = [
@@ -288,7 +282,7 @@ buildPythonApplication rec {
 
     # dereference the `kitty` symlink to make sure the actual executable
     # is wrapped on macOS as well (and not just the symlink)
-    wrapProgram $(realpath "$out/bin/kitty") --prefix PATH : "$out/bin:${
+    wrapProgram $(realpath "$out/bin/kitty") --suffix PATH : "$out/bin:${
       lib.makeBinPath [
         imagemagick
         ncurses.dev
