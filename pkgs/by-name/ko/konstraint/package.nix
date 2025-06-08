@@ -11,7 +11,7 @@ buildGoModule rec {
 
   src = fetchFromGitHub {
     owner = "plexsystems";
-    repo = pname;
+    repo = "konstraint";
     rev = "v${version}";
     sha256 = "sha256-DwfBevCGDndMfQiwiuV+J95prhbxT20siMrEY2T7h1w=";
   };
@@ -43,7 +43,7 @@ buildGoModule rec {
     runHook postInstallCheck
   '';
 
-  meta = with lib; {
+  meta = {
     homepage = "https://github.com/plexsystems/konstraint";
     changelog = "https://github.com/plexsystems/konstraint/releases/tag/v${version}";
     description = "Policy management tool for interacting with Gatekeeper";
@@ -53,7 +53,7 @@ buildGoModule rec {
       Gatekeeper. Automatically copy Rego to the ConstraintTemplate. Automatically update all ConstraintTemplates with
       library changes. Enable writing the same policies for Conftest and Gatekeeper.
     '';
-    license = licenses.mit;
-    maintainers = with maintainers; [ jk ];
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ jk ];
   };
 }
