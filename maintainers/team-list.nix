@@ -186,6 +186,19 @@ with lib.maintainers;
     shortName = "Categorization";
   };
 
+  ci = {
+    members = [
+      MattSturgeon
+      mic92
+      philiptaron
+      wolfgangwalther
+      zowoq
+    ];
+    githubTeams = [ "nixpkgs-ci" ];
+    scope = "Maintain Nixpkgs' in-tree Continuous Integration, including GitHub Actions.";
+    shortName = "CI";
+  };
+
   cinnamon = {
     members = [
       bobby285271
@@ -913,11 +926,21 @@ with lib.maintainers;
   ngi = {
     members = [
       eljamm
+      ethancedwards8
       fricklerhandwerk
+      OPNA2608
+      prince213
       wegank
     ];
     scope = "Maintain NGI-supported software.";
     shortName = "NGI";
+  };
+
+  nixos-rebuild = {
+    members = [ thiagokokada ];
+    scope = "Maintain nixos-rebuild(-ng).";
+    shortName = "nixos-rebuild";
+    enableFeatureFreezePing = true;
   };
 
   node = {
