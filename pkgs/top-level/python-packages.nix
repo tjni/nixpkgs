@@ -2823,6 +2823,8 @@ self: super: with self; {
 
   colcon-parallel-executor = callPackage ../development/python-modules/colcon-parallel-executor { };
 
+  colcon-recursive-crawl = callPackage ../development/python-modules/colcon-recursive-crawl { };
+
   colcon-ros-domain-id-coordinator =
     callPackage ../development/python-modules/colcon-ros-domain-id-coordinator
       { };
@@ -4762,8 +4764,6 @@ self: super: with self; {
   equinox = callPackage ../development/python-modules/equinox { };
 
   eradicate = callPackage ../development/python-modules/eradicate { };
-
-  eris = callPackage ../development/python-modules/eris { };
 
   es-client = callPackage ../development/python-modules/es-client { };
 
@@ -18369,9 +18369,14 @@ self: super: with self; {
 
   tivars = callPackage ../development/python-modules/tivars { };
 
-  tkinter = callPackage ../development/python-modules/tkinter {
-    py = python.override (lib.optionalAttrs (!python.isPyPy) { x11Support = true; });
-  };
+  tkinter =
+    if isPyPy then
+      null
+    else
+      callPackage ../development/python-modules/tkinter {
+        tcl = pkgs.tcl-9_0;
+        tk = pkgs.tk-9_0;
+      };
 
   tkinter-gl = callPackage ../development/python-modules/tkinter-gl { };
 
@@ -18834,6 +18839,8 @@ self: super: with self; {
   typer = callPackage ../development/python-modules/typer { };
 
   typer-shell = callPackage ../development/python-modules/typer-shell { };
+
+  typer-slim = self.typer.override { package = "typer-slim"; };
 
   types-aiobotocore = callPackage ../development/python-modules/types-aiobotocore { };
 

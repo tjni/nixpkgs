@@ -439,7 +439,7 @@ in
     imports = [ ./discourse.nix ];
     _module.args.package = pkgs.discourseAllPlugins;
   };
-  dnscrypt-proxy2 = runTestOn [ "x86_64-linux" ] ./dnscrypt-proxy2.nix;
+  dnscrypt-proxy = runTestOn [ "x86_64-linux" ] ./dnscrypt-proxy.nix;
   dnsdist = import ./dnsdist.nix { inherit pkgs runTest; };
   doas = runTest ./doas.nix;
   docker = runTestOn [ "aarch64-linux" "x86_64-linux" ] ./docker.nix;
@@ -494,7 +494,6 @@ in
   };
   ergo = runTest ./ergo.nix;
   ergochat = runTest ./ergochat.nix;
-  eris-server = runTest ./eris-server.nix;
   esphome = runTest ./esphome.nix;
   etc = pkgs.callPackage ../modules/system/etc/test.nix { inherit evalMinimalConfig; };
   activation = pkgs.callPackage ../modules/system/activation/test.nix { };
