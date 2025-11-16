@@ -8576,8 +8576,6 @@ self: super: with self; {
 
   line-profiler = callPackage ../development/python-modules/line-profiler { };
 
-  linear-garage-door = callPackage ../development/python-modules/linear-garage-door { };
-
   linear-operator = callPackage ../development/python-modules/linear-operator { };
 
   linearmodels = callPackage ../development/python-modules/linearmodels { };
@@ -12926,6 +12924,8 @@ self: super: with self; {
   pycrc = callPackage ../development/python-modules/pycrc { };
 
   pycrdt = callPackage ../development/python-modules/pycrdt { };
+
+  pycrdt-store = callPackage ../development/python-modules/pycrdt-store { };
 
   pycrdt-websocket = callPackage ../development/python-modules/pycrdt-websocket { };
 
