@@ -73,6 +73,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     maintainers = with lib.maintainers; [
       psibi
       krovuxdev
+      philocalyst
     ];
     mainProgram = "ouch";
   };
