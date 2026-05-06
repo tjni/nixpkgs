@@ -19045,7 +19045,6 @@ self: super: with self; {
 
   taco = toPythonModule (
     pkgs.taco.override {
-      inherit (self) python;
       enablePython = true;
     }
   );
