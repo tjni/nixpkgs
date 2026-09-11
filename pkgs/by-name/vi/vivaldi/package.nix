@@ -172,10 +172,6 @@ stdenv.mkDerivation rec {
         --set-rpath "${libPath}" \
         opt/vivaldi/$f
     done
-
-    for f in libqt5_shim.so libqt6_shim.so; do
-      patchelf --set-rpath "${libPath}" opt/vivaldi/$f
-    done
   ''
   + lib.optionalString proprietaryCodecs ''
     ln -s ${vivaldi-ffmpeg-codecs}/lib/libffmpeg.so opt/vivaldi/libffmpeg.so.''${version%\.*\.*}
