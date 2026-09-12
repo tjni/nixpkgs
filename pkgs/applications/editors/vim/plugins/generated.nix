@@ -5923,6 +5923,20 @@ final: prev: {
     meta.hydraPlatforms = [ ];
   };
 
+  fcitx-nvim = buildVimPlugin {
+    pname = "fcitx.nvim";
+    version = "0-unstable-2026-08-28";
+    src = fetchFromGitHub {
+      owner = "h-hg";
+      repo = "fcitx.nvim";
+      rev = "72cf374c6011a7f2e0bc5f896adba4e62700e41c";
+      hash = "sha256-nv38gSq6X7Q0aPdAknGjwfh8Bn+AxTpgUYK9kNyKfM8=";
+    };
+    meta.homepage = "https://github.com/h-hg/fcitx.nvim/";
+    meta.license = getLicenseFromSpdxId "MIT";
+    meta.hydraPlatforms = [ ];
+  };
+
   fcitx-vim = buildVimPlugin {
     pname = "fcitx.vim";
     version = "1.2.6-unstable-2025-12-28";
